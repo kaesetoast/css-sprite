@@ -72,6 +72,9 @@ module.exports = {
    */
   stream: function (o) {
     var opts = _.extend({}, defaults, o);
+    if (opts.hash) {
+      opts.name += '-' + Math.round(new Date().getTime() / 1000);
+    }
     return sprite(opts);
   }
 };
