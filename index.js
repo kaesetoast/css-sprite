@@ -34,6 +34,7 @@ var defaults = {
   background: '#FFFFFF',
   margin: 4,
   opacity: 0,
+  hash: false
 };
 
 module.exports = {
@@ -49,6 +50,9 @@ module.exports = {
     }
 
     var opts = _.extend({}, defaults, o);
+    if (opts.hash) {
+      opts.name += '-' + Math.round(new Date().getTime() / 1000);
+    }
     if (opts.style && path.basename(opts.style).indexOf('.') === -1) {
       opts.style = path.join(opts.style, replaceExtension(opts.name, '.' + opts.processor));
     }
